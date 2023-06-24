@@ -33,7 +33,7 @@ public class Map{
 			List<Option> options2 = new LinkedList<Option>(); 
 			
 			for(int i=1;i<line1.length-1;i++){
-				Option temp = new Option(line1[i], "interact");
+				Option temp = new Option(line1[i], "root", "interact");
 				options2.add(temp);
 			}
 			
@@ -104,6 +104,7 @@ public class Map{
 			System.out.println("("+i+") -" + current.options.get(i+2)); //prints out the number and corresponding option
 			System.out.println("");
 			}
+			System.out.println("("+(n+1)+") -" + "Character screen and journal");
 			choice = Integer.parseInt(console.nextLine());
 		}catch (Exception e){
 			clearCon();
@@ -111,12 +112,30 @@ public class Map{
 			space(2);
 		}
 		
-		}while(choice<1||choice>n);
+		}while(choice<1||choice>n+1);
 		
 		if(choice ==1){
 			return move(current,console);
 		}
-		if(choice>1){
+		else if(choice== n+1){
+			
+			String[] chooseStats = new String[3];
+			chooseStats[0] = "See attributes";
+			chooseStats[1] = "Inventory";
+			chooseStats[2] = "Journal";
+			int choiceStats = Advent.choose(chooseStats,console);
+			
+			if(choiceStats == 1){
+				player.getStats();
+			}
+			if(choiceStats == 2){
+				player.seeInventory();
+			}
+			if(choiceStats == 3){
+				player.quests.seeJournal();
+			}
+		}
+		else{
 			
 			runRoom(player, current, choice-2, console);
 		}

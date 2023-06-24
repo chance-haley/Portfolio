@@ -12,7 +12,7 @@ public class Act1{
 	 */
 	public static Adventurer act1(Adventurer player)throws FileNotFoundException{
 		Scanner console = new Scanner(System.in);
-		
+	
 		Advent.clearCon();
 		Advent.printCenter("After the battle you eagerly join up with the rest of the lucky few who managed to best their opponents.");
 		Advent.printCenter("You are quickly ran threw a system of pipes overhead that spray down warm water to bathe off the blood.");
@@ -24,10 +24,22 @@ public class Act1{
 		Advent.printCenter("Your first serious dilemma occurs on the 2nd week of training.");
 		Advent.cont(console);
 		Advent.clearCon();
-		Advent.printCenter("Your bunkmate, Carlos has started to become very ill.");
+		Advent.printCenter("Your bunkmate and cousin, Carlos has started to become very ill.");
 		Advent.printCenter("He vomits and your whole room is punished for his inability to participate in runs and weapon training.");
 		Advent.cont(console);
 		Advent.clearCon();
+		
+		Option sick = new Option("You and your bunkmates confer about what to do about Carlos. As his blood you have final call.", "root", "NA");
+		Option diagnose = new Option("You decide to try and find out what ails Carlos.", "check", "Try to diagnose him.");
+		Option getHelp = new Option("You decide to take Carlos to the medicinal hut.", "check", "Take him to a doctor, this may be expensive.");
+		Option doNothing = new Option("You decide to let Chance decide what happens next, you will do nothing.", "leave","There is nothing more we can do.");
+		Option killHim = new Option("You decide to end his life, whether out of mercy or spite is unknown.", "leave", "We must destroy the weak to make the whole stronger, kill him in his sleep");
+		
+		Option ptdiagnose = new Option("Obvious Carlos has wet-lung, which can be treated hastely with bloodletting.", "NA", "You are able to diagnose him successfully. (INT pass)");
+		Option ftdiagnose = new Option("You try to deduce the cause without any fruitful conclusions.","NA","You are unable to diagnose him (INT fail)");
+		
+		
+		
 		Advent.printCenter("You will now be taken to act 1 map, this is still a work in progress");
 		
 		
@@ -37,47 +49,35 @@ public class Act1{
 		
 		//added shop to node 14 for testing, will initate some of my option logic but fails in some respects, found going N->W->N
 		
-		Option shop = new Option("You enter a shop", "shop");
-		
-		Option outlaw = new Option("I recogonize your face, grown a bit but still ugly all the same.", "You must be mistaken...");
-		
-		Option ptest = new Option("I guess people can change, alright I'll not gouge you for all your chips, son","shop");
-		
-		Option ftest = new Option("Ha! You best remember your place loser! Leave me.", "leave");
-		
-		Option newface = new Option("Nice to see a new face, what can I do for you?", "Say hello to shopkeeper!");
-		
-		Option shophere = new Option("Please look at my goods!", "shop");
-		
+		Option shop = new Option("You enter a shop", "root","NA" );
+		Option outlaw = new Option("I recogonize your face, grown a bit but still ugly all the same. Best have loads of coin to shop here", "check", "Looks like he recognizes you");
+		Option ptest = new Option("I guess people can change, alright I'll not gouge you for all your chips, son","NA", "Try to convince him he's mistaken(CHR)");
+		Option ftest = new Option("Ha! You best remember your place loser! Leave me.", "leave", "leave");
+		Option newface = new Option("Nice to see a new face, what can I do for you?", "NA", "Say hello to shopkeeper!");
+		Option shophere = new Option("Please look at my goods!", "shop", "Open shop");
+		Option shopherefail = new Option("The shopkeeper looks visible upset.", "shop", "Open shop");
 		List<Items> firstshop = new LinkedList<Items>();
-		
 		firstshop.add( new Hatchet());
 		firstshop.add( new GuardArmor());
 		firstshop.add( new Bow());
-		
 		shop.local = new Shopkeeper("Bob", "A stall which sells weaver goods", firstshop);
-		
 		//returns to shop if you pass test as outlaw
-		ptest.add(shop,player.isOutlaw);
-		
+		ptest.add(shophere,player.isOutlaw);
 		//will only add 1 depending on prereqs
 		shop.add(outlaw, player.isOutlaw);
 		shop.add(newface, !player.isOutlaw);
-		
 		//will only add 2 depending on prereqs
 		if(player.stats[1]< 10){
-			
 			outlaw.add(ftest, player.isOutlaw);
 		}
 		else if(player.stats[1]>= 10){
-			
-			outlaw.add(shop, player.stats[1] >= 10); //should raise prices but need to implement
+			outlaw.add(shopherefail, player.stats[1] >= 10); //should raise prices but need to implement
 		}
 		else{ 
 			outlaw.add(ptest, player.stats[1] > 14);
 		}
 		//you are allowed to shop as a newface
-		newface.add(shop,true);
+		newface.add(shophere,true);
 		
 		Room temp = level1.rooms.get(14);
 		temp.options.add("Enter shop");

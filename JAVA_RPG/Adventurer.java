@@ -5,6 +5,9 @@ public class Adventurer extends Characters //implements Comparable<Adventurer>
 	public boolean onMap;
 	public int money;
 	public int exp;
+	public int lvl;
+	public int expneeded;
+	public Journal quests;
 	public boolean canSwim;
 	public boolean isGifted;
 	public boolean isOutlaw;
@@ -33,14 +36,15 @@ public class Adventurer extends Characters //implements Comparable<Adventurer>
 		int[] basehp = {100,100};
 		
 		this.name = name;
-		this.race= race;
+		this.race = race;
 		this.loadout = loadout;
-		this.stats= stats; //0=strength, 1=Charisma, 2=Intelligence 3= Agility 4= points
-		this.perks=perks;
-		this.exp= 0;
-		this.HP= basehp;
-		this.money=0;
-		this.onMap= true;
+		this.stats = stats; //0=strength, 1=Charisma, 2=Intelligence 3= Agility 4= points
+		this.perks = perks;
+		this.exp = 0;
+		this.HP = basehp;
+		this.money = 0;
+		this.onMap = true;
+		this.quests = new Journal();
 		
 		
 	}
@@ -238,11 +242,13 @@ public class Adventurer extends Characters //implements Comparable<Adventurer>
 	//inventory manangment
 	
 	public void seeInventory(){
+		Scanner console = new Scanner(System.in);
 		Act1.printCenter("These are the items you call yours... for now.");
 		
 		for(Items item: inventory){
 			System.out.print(item.name + "\t" + item.desc + "\n");
 		}
+		Advent.cont(console);
 		
 		//need to add functionality to change loadout from this screen
 	}

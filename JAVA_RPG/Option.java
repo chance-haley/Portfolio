@@ -8,6 +8,8 @@ public class Option{
 	
 	String desc;
 	
+	String choice;
+	
 	String effect;
 	
 	Shopkeeper local;
@@ -25,8 +27,8 @@ public class Option{
 		
 		return false;
 	}
-		
-		
+
+	
 	public Option(){
 		List<Option> choices1 = new LinkedList<Option>();
 		this.desc = "Empty Option";
@@ -34,12 +36,13 @@ public class Option{
 		this.effect = "empty";
 	}
 	
-	public Option(String desc, String effect){
+	public Option(String desc, String effect, String choice){
 		List<Option> choices1 = new LinkedList<Option>();
 		
 		this.desc = desc;
 		this.choices = choices1;
 		this.effect = effect;
+		this.choice = choice;
 		this.root=this;
 	}
 	
@@ -97,30 +100,29 @@ public class Option{
 		Scanner console = new Scanner(System.in);
 		Option temp = root;
 		
-			//will store your possible choices in the tree
-			String[] options = new String[temp.choices.size()];
+		//will store your possible choices in the tree
+		String[] options = new String[temp.choices.size()];
 			
-			Advent.printCenter(temp.desc); //print out description of current node
-			int size = temp.choices.size();
-			choices = temp.choices; //this fixed alot of my bugs
-			//System.out.println("number of choices - " + size);
-			for(int i =0; i<size;i++){
-				Option temp2 = temp.choices.get(i);
-				options[i] = temp2.effect;
-				//System.out.println(temp2.desc);
-			}
-			//System.out.println(options);
-			int a = Advent.choose(options,console);
-			//System.out.println(temp.choices.size());
-			
-			temp = choices.get(a-1);
+		Advent.printCenter(temp.desc); //print out description of current node
+		int size = temp.choices.size();
+		choices = temp.choices; //this fixed alot of my bugs
+		for(int i =0; i<size;i++){
+			Option temp2 = temp.choices.get(i);
+			options[i] = temp2.choice;
+		}
+		int a = Advent.choose(options,console);
+		temp = choices.get(a-1);
+		
+		//area to place special cases using effect string
+		
 		if(temp.effect.equals("shop")){
 			local.shop(player);
-			//System.out.println("12345");
 			return;
 		}
 		
-		if(temp.isEnd()) return; //breaks recursion
+		//breaks recursion
+		
+		if(temp.isEnd()) return;
 		
 		runTree(player, temp);
 

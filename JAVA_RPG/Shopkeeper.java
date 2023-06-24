@@ -77,9 +77,9 @@ public class Shopkeeper{
 		
 		//creating options for choose method
 		String[] toStringInv = new String[toSell.size()+1];
-		for(int i = 0; i< toSell.size()-1; i++){
+		for(int i = 0; i< toSell.size(); i++){
 			Items temp = toSell.get(i);
-			toStringInv[i] = temp.type + "\t\t" + temp.name + "\t\t\t" + Integer.toString((int)Math.round((double)temp.value * gouge));
+			toStringInv[i] = temp.type + "\t\t\t" + temp.name + "\t\t\t" + Integer.toString((int)Math.round((double)temp.value * gouge));
 		}
 		toStringInv[toSell.size()] = "Leave shop";
 		

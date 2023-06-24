@@ -12,12 +12,12 @@ public class Central{
 		Scanner scan = new Scanner(System.in);
 		
 		//returns your player after intro act
-		Adventurer player = Advent.intro();
+		//Adventurer player = Advent.intro();
 		
 		
-		Adventurer nimawak = Act12.act12();
+		//Adventurer nimawak = Act12.act12();
 		//setting up tester character
-		/* String booyah= "Tester";
+		String booyah= "Tester";
 		Items[] base2 = new Items[1];
 		
 		String[] base1 = new String[5];
@@ -32,7 +32,7 @@ public class Central{
 		bad[1]= empty;
 		bad[2]= armor;
 		player.loadout= bad;
-		*/
+		
 		//returns your player after act 1
 		player = Act1.act1(player);
 	}
