@@ -1,0 +1,1 @@
+Hello! Welcome to my machine learning portfolio. This folder contains my lab work from my college course covering machine learning. Namely you will find files that use datasets and ML libraries common to Python.
