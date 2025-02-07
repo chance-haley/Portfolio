@@ -4,12 +4,12 @@ import java.io.*;
 public class Advent{
 	/**
 	 * The introduction sequence where you will create your character.
-	 * 
+	 *
 	 * @return Adventurer this will be the character you create through your decisions
 	 */
-	public static Adventurer intro(){
+	public Adventurer intro()throws FileNotFoundException{
 		Scanner console = new Scanner(System.in);
-		
+
 		printCenter("--------------------------------------------------");
 		printCenter("");
 		printCenter("");
@@ -19,32 +19,32 @@ public class Advent{
 		printCenter("--------------------------------------------------");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("Sixty-six million years ago.");
 		printCenter("Somewhere in the Gulf of Mexico...");
 		cont(console);
 		clearCon();
-		
-		
+
+
 		printCenter("You awaken from a violent dream of a distant future.");
 		printCenter("You are a member of the Bula Bula tribe.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("For centuries your people have thrived in the Drywoods");
 		printCenter("around the center of the island.");
 		printCenter("Bula Bula is the ruling tribe of the federation:");
 		printCenter("An enormous mighty empire that spans most of the island.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("Now your people are engulfed in a civil war.");
 		printCenter("Fueled by decades of jealousness,");
 		printCenter("the Comms(short for Common people) have rallied behind");
 		printCenter("a new clan chief with distant claim to the throne.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("They demand equal treatment and representation within the tribal Counsel.");
 		printCenter("For years, neglect and greed have led to widespread corruption within");
 		printCenter("the vast federation.");
@@ -52,22 +52,22 @@ public class Advent{
 		printCenter("they are feeling the full effects of the tribal corruption.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("It is up to you to decide the fate of the island.");
 		printCenter("Do you have what it takes?");
 		cont(console);
 		clearCon();
-		
+
 		//placeholder character creation
 		String booyah= "";
 		Items[] base2 = new Items[1];
 		String[] base1 = new String[5];
 		int[] base= {10,10,10,10,5}; // base stats //tbc
 		Adventurer player = new Adventurer( booyah, "Unknown", base2, base, base1);
-		
+
 		printCenter("First, what is your name? (name will appear exactly as entered)");
 		space();
-		
+
 		int n=0;
 		while(n !=1){
 			System.out.print("My name is..."); //choosing name
@@ -80,15 +80,15 @@ public class Advent{
 				printCenter("Forgotten your own name? Try again...");
 				space();
 			}
-			
-		}	
-		
+
+		}
+
 		clearCon();
 		printCenter("Oh, a legendary name for such a low-life.");
 		cont(console);
 		clearCon();
 		printCenter("");
-		
+
 		printCenter("Now tell me, " + player.name + " were you born gifted?"); //choosing race
 		space();
 		int a = yesno(console);
@@ -98,13 +98,13 @@ public class Advent{
 			player.race= "Gifted Human";
 			printCenter("You are a rare individual.");
 		}
-		if(a==2){ 
+		if(a==2){
 			player.race= "Common Human";
 			printCenter("You are among the many.");
 		}
 		cont(console);
 		clearCon();
-		
+
 		printCenter("There are several stories on the island, interwebbed like the energy that connects us.");
 		printCenter("Your upbringing is not unimportant and confers more than just physical or mental strength.");
 		printCenter("Now, tell me, who were your parents?"); //choosing starting cond.
@@ -194,7 +194,7 @@ public class Advent{
 		printCenter("You now walk among the living dead.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("");
 		printCenter("*You will now finish creating your character.*");
 		printCenter("Through your choices so far, these are your stats:");
@@ -202,20 +202,20 @@ public class Advent{
 		System.out.print(player.getStats1());
 		cont(console);
 		clearCon();
-		
+
 		printCenter("Please spend all your available points to continue.");
-		
+
 		do{ //level up system
 			player.lvlup(player.stats);
 		}while(player.stats[4]>0);
-		
+
 		printCenter("It's a cold wet morning.");
 		printCenter("You are standing in a puddle waiting.");
 		printCenter("\"Next!\"");
 		printCenter("You hear it like ticking clock, faint but steady.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("In this life, nothing is free.");
 		printCenter("\"Next!\"");
 		space(1);
@@ -227,11 +227,11 @@ public class Advent{
 		printCenter("You aren't given the privilege of losing them in battle.");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("\"Next!\"");
 		cont(console);
 		clearCon();
-		
+
 		printCenter("First you must prove yourself through duel with only a hatchet.");
 		printCenter("Two enter as Water Wasters.");
 		printCenter("One leaves as Yunta.");
@@ -241,43 +241,79 @@ public class Advent{
 		printCenter("");
 		cont(console);
 		clearCon();
-		
+
 		Items[] bad = new Items[3]; //setting up first battle equipment
-		Hatchet hatchet = new Hatchet();
+		//Hatchet hatchet = new Hatchet();
 		Armor armor = new Armor();
 		Weapons empty = new Weapons();
-		bad[0]= hatchet;
+		//bad[0]= hatchet;
 		bad[1]= empty;
 		bad[2]= armor;
 		player.loadout= bad;
-		Characters enemy1 = new Characters( "A Desperate Man" , 1 ,bad,20); //first encounter
-		
-		battle(player,enemy1); //battle 1
-		
-		
+
+		Adventurer enemy1 = new Adventurer( booyah, "Unknown", base2, base, base1); //first encounter
+		enemy1.loadout= bad;
+
+		battle(player,enemy1,25); //battle 1
+
+
 		return player;
 	}
 	/**
 	 * Places you into a battle with another character.
-	 * 
+	 *
 	 * @param player the player's adventurer
 	 * @param guy the enemy character
 	 */
-	public static void battle(Adventurer player, Characters guy){
+	public void battle(Adventurer player, Adventurer guy,int distance)throws FileNotFoundException{
 		Scanner console = new Scanner(System.in);
 		Random rand = new Random();
+
+		//initalizing potential choices for setting up interface.
+			//loadout
 		Weapons pweapon = (Weapons) player.loadout[0];
 		Weapons pweapon2 =(Weapons) player.loadout[1];
 		Weapons gweapon = (Weapons) guy.loadout[0];
 		Weapons gweapon2 = (Weapons) guy.loadout[1];
 		Armor parmor = (Armor) player.loadout[2];
 		Armor garmor = (Armor) guy.loadout[2];
+			//usable inventory
+		List<Items> pusables = new ArrayList<>();
+		for(Items item: player.inventory){
+			if(item.useable==true){
+				pusables.add(item);
+			}
+		}
+		List<Items> gusables = new ArrayList<>();
+		for(Items item: guy.inventory){
+			if(item.useable==true){
+				gusables.add(item);
+			}
+		}
+			//weapon attacks
+		//   List<
+
+			//move below to UI
+		if(pusables.size()>0){
+			Act1.printCenter("What item would you like to use?");
+			String[] options3 = new String[pusables.size()];
+			for(int i=0; i<pusables.size();i++){
+				options3[i] = pusables.get(i).name;
+			}
+			int choice2 = Act1.choose(options3,console);
+			pusables.get(choice2-1).useItem(player);
+			pusables.remove(choice2-1);
+		}else{
+			Act1.printCenter("You have no usable items.");
+		}
+			//
+
 		int intiDodge= parmor.dodgeDice;
 		int intiDodge2= garmor.dodgeDice;
-		
+
 		printCenter("You have entered battle with: " + guy.name);
 		cont(console);
-		
+
 		do{
 			System.out.print(player.getHP());
 			printCenter("Please select a combat action.");
@@ -286,15 +322,15 @@ public class Advent{
 			int gdmg = gweapon.damage(player.stats) + gweapon2.damage(player.stats);
 			int gdef = garmor.defense;
 			int pdef = parmor.defense;
-			
+
 			String[] options = {"Attack with your " + pweapon.name,"Brace yourself for the next attack",};
 			String[] options2 = {"Attack with your " + pweapon.name,"Brace yourself for the next attack","See stats"};
-			
+
 			int d = choose(options2, console);
 			int a= 0;
-			
+
 			// allow player to see stats at beginning of turn, may add loadout later
-			
+
 			if(d==3){
 				System.out.print(player.getStats()); //prints player stats
 				space(1);
@@ -313,16 +349,16 @@ public class Advent{
 			if(a==1){
 				clearCon();
 				int dodged = 0;
-				
+
 				pdmg -= gdef;
-				
+
 				//if defense>attack dmg=0
-				if(pdmg<0){ 
+				if(pdmg<0){
 					pdmg = 0;
 				}
 				// dodge
 				for(int i=0; i<garmor.dodgeDice; i++){
-					
+
 					int b = rand.nextInt(6)+1;
 					dodged += b;
 				}
@@ -333,41 +369,41 @@ public class Advent{
 					printCenter("You land an average attack.");
 				}
 				guy.HP[0] -= pdmg; 	//reduce enemy hp by dmg
-				
+
 				//reset dodge and defense bonuses of enemy after turn
 				garmor.dodgeDice = intiDodge2;
 				gdef = garmor.defense;
-				
+
 				printCenter("You attacked for: " + Integer.toString(pdmg) + " damage."); //Displays dmg done by player
 				space(2);
-				
-				
+
+
 				//Display enemy health to player
-				
-				
-				if(guy.HP[0]/10>=7){ 
-					
+
+
+				if(guy.HP[0]/10>=7){
+
 					printCenter("The enemy is unwavering.");
-					
+
 				}
-				if(guy.HP[0]/10<7 && guy.HP[0]/10>4 ){ 
-					
+				if(guy.HP[0]/10<7 && guy.HP[0]/10>4 ){
+
 					printCenter("The enemy is beginning to faulter.");
-					
+
 				}
 				if(guy.HP[0]/10<=4 && guy.HP[0]/10>=2 ){
-					
+
 					printCenter("The enemy is limping.");
-					
+
 				}
-				if(guy.HP[0]/10 <=1){ 
-					
+				if(guy.HP[0]/10 <=1){
+
 					printCenter("The enemy looks totally beaten and bloody.");
-					
+
 				}
 				cont(console);
 				clearCon();
-				
+
 			}
 			//defense
 			if(a==2){
@@ -378,7 +414,7 @@ public class Advent{
 				cont(console);
 				clearCon();
 			}
-			
+
 			printCenter("The enemy prepares to attack.");
 			if(guy.HP[0]<0){
 				 printCenter("But he falls down convulsing and his mouth fills with foam.");
@@ -393,20 +429,20 @@ public class Advent{
 				return;
 			}
 			int logic = rand.nextInt(11);
-			
+
 			//attack
 			if(logic>=5){
 				int dodged = 0;
 				gdmg -= pdef;
-					
+
 				//if defense>attack dmg=0
-				if(gdmg<0){ 
+				if(gdmg<0){
 					gdmg = 0;
 				}
-				
+
 				// dodge
 				for(int i=0; i<parmor.dodgeDice; i++){
-						
+
 					int b = rand.nextInt(6)+1;
 					dodged += b;
 				}
@@ -417,11 +453,11 @@ public class Advent{
 					printCenter("The enemy's strike lands true.");
 				}
 				player.HP[0] -= gdmg; 	//reduce enemy hp by dmg
-					
+
 				printCenter("You were attacked for: " + Integer.toString(gdmg) + " damage."); //states dmg
 				cont(console);
 				clearCon();
-					
+
 				//reset dodge and bonuses after turn
 				parmor.dodgeDice = intiDodge;
 				pdef = parmor.defense;
@@ -442,9 +478,9 @@ public class Advent{
 					return;
 				}
 		}while(guy.HP[0]>0);
-		
-		
-		
+
+
+
 	}
 	//legacy code
 	/*
@@ -470,64 +506,143 @@ public class Advent{
 		for(int i=0; i<=15;i++){
 			System.out.println("");
 		}
-		
+
 	}
 	/**
 	 * Creates empty lines to print onto the console.
-	 * 
+	 *
 	 * @param lines the amount of blank lines you wish to print to the console.
 	 */
 	public static void space(int lines){
 		for(int i=0; i<=lines;i++){
 			System.out.println("");
 		}
-		
+
 	}
 	/** Prints your string to the center of the console
-	 * 
+	 *
 	 * @param words The String of words you wish to print on the center of the console
-	 * 			do not use String of characters greater than 100
+	 * 			do not use String of characters greater than 200
 	*/
-	public static void printCenter(String words){ //assumes a 100 character wide console
-		
+	public static void printCenter(String words){ //assumes a 200 character wide console
+
 		int x = words.length();
-		int y = (100-x);
+		int y = (200-x);
 		int z= y/2;
-		
-		for(int i=z; i>0; i--){
-			System.out.print(" ");
+
+		if(x<175){ //no need for formatting second line
+			for(int i=z; i>0; i--){
+				System.out.print(" ");
+			}
+				System.out.print(words);
+			for(int i=z; i>0; i--){
+				System.out.print(" ");
+			}
+			System.out.println("");
 		}
-			System.out.print(words);
-		for(int i=z; i>0; i--){
-			System.out.print(" ");
+		if(x>=175){
+			String[] split = splitWords(words);
+			String words1 = split[0];
+			String words2 = split[1];
+
+			int x1 = words1.length();
+			int x2 = words2.length();
+			int y1 = (200-x1);
+			int y2 = (200-x2);
+			int z1= y1/2;
+			int z2= y2/2;
+
+			//System.out.println("Split at: " + x1 + "\t Output below");
+			//System.out.println("");
+
+			for(int i=z1; i>0; i--){
+				System.out.print(" ");
+			}
+				System.out.print(words1);
+			for(int i=z1; i>0; i--){
+				System.out.print(" ");
+			}
+			for(int i=z2; i>0; i--){
+				System.out.print(" ");
+			}
+				System.out.print(words2);
+			for(int i=z2; i>0; i--){
+				System.out.print(" ");
+			}
+			System.out.println("");
 		}
-		System.out.println("");
-		
+
+	}
+	public static String[] splitWords(String words){
+	String line1 = "";
+	String line2 = "";
+	int splithere = 0;
+	//strings used to create new substrings
+	String firstpref = ". ";
+	String secondpref = ", ";
+	String lastpref = " ";
+	int tries = 0;
+	boolean set = false;
+	do{
+		switch(tries){
+			case 0:
+				if(words.indexOf(firstpref,175)<200){
+					splithere = words.indexOf(firstpref,175);
+					set=true;
+					//System.out.println("found valid split during pass: " + tries + " at: " + splithere);
+				}
+				break;
+			case 1:
+				if(words.indexOf(secondpref,175)<200){
+					splithere = words.indexOf(secondpref,175);
+					set=true;
+					//System.out.println("found valid split during pass: " + tries + " at: " + splithere);
+				}
+				break;
+			case 2:
+				if(words.indexOf(lastpref,175)<200){
+					splithere = words.indexOf(lastpref,175);
+					set=true;
+					//System.out.println("found valid split during pass: " + tries + " at: " + splithere);
+				}
+				break;
+			case 3:
+				splithere = 175;
+				set=true;
+				break;
+		}
+		tries++;
+	}while(set == false ||splithere<=0);
+
+	line1 = words.substring(0,splithere+2);
+	line2 = words.substring(splithere+2,words.length());
+	String[] output = {line1,line2};
+	return output;
 	}
 	/**
 	 * Pauses the game to allow the player to read text, then continues.
-	 * 
+	 *
 	 * @param scan the user's keyboard inputs
 	 */
 	public static void cont(Scanner scan){
-		
+
 		for(int i=0; i<=15;i++){
 		System.out.println("");
 	}
-		System.out.println("Enter any key to continue...");
+		printCenter("Enter enter to continue...");
 		String next = scan.nextLine();
-		
+
 	}
 	/**
 	 * Prints out a series of choices and allows the user to pick a number corresponding to an option
-	 * 
+	 *
 	 * @return int an integer that represents the choice of the user
-	 * 
+	 *
 	 * @param options the String[] of options that you wish the user to choose from
 	 * @param console the user's keyboard inputs
 	 */
 	public static int choose( String[] options,Scanner console){ // n is number of options
-		
+
 		int choice = 0;
 		Exception iae = new IllegalArgumentException();
 		int n = options.length;
@@ -535,7 +650,7 @@ public class Advent{
 			System.out.println("Please choose an option below:\n");
 			try{
 			for(int i=1; i<=n;i++){
-			
+
 			System.out.println("("+i+") -" + options[i-1]); //prints out the number and corresponding option
 			System.out.println("");
 			}
@@ -545,24 +660,24 @@ public class Advent{
 			System.out.println("Please enter the number of a valid option.");
 			space(2);
 		}
-		
+
 		}while(choice<1||choice>n);
-		
+
 		return choice;
-	
+
 	}
 	/**
 	 * Asks the user to enter either one for yes, or two for no
-	 * 
+	 *
 	 * @return int an integer that represents the choice of the user
-	 * 
+	 *
 	 * @param console the user's keyboard inputs
 	 */
 	public static int yesno(Scanner console){
-		
+
 		String[] yesno1 = {"Yes.", "No."};
 		int yesno2 = choose(yesno1, console);  //1 = yes, 2 = no
-		
+
 		clearCon();
 		return yesno2;
 	}

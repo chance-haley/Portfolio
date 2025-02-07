@@ -1,0 +1,10 @@
+FORMAT INSTRUCTIONS --| QuestID(-)CommonName(-)NumofStates(allocates lines below for each state)(-) |-- note: instead of (-) use -> ~
+0~Placeholder~3~
+This text should show up in your journal once quest started until you complete another action to move onto the next state.~
+This text should show up after you complete step 1.~
+This text should appear once you've completed the quest.~
+1~Bunkmate Carlos~4~
+You must do something about Carlos' failing health!
+You managed to save Carlos and now he is a fellow guard of the city.
+Carlos died a slow death of unknown origin, all his belongings were taken by the Comparde.
+You killed Carlos and took his mace, the tribe is stronger without him.

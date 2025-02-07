@@ -1,0 +1,6 @@
+Below follows a list of items used to create them using the constructors in Weapons and Armor and Items. This is currently a work in progress.
+FORMAT INSTRUCTIONS -> Item ID ~ Item name ~ Item type ~ Item Value ~ Item Desc1 ~ Item Desc2(weapons and armor) ~ Handused (weapon) ~ Dmg/Armor calc (weapons and armor)
+0~Example~Item~0~This is an example description~
+00~Example2~Weapon~100~This is an example weapon~Does 1 dice + 1/4 STR ~1~ 1 & 1/4 STR~ 
+
+

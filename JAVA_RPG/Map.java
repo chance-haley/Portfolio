@@ -1,45 +1,45 @@
 import java.util.*;
 import java.io.*;
 public class Map{
-	
+
 	String mapName;
-	List<Room> rooms; 
-	
+	List<Room> rooms;
+
 	//constructor
 	public Map(String mapName){
 		this.mapName= mapName;
 	}
-	
+
 	/**
 	 * This method creates the map used in Act1 using a txt file called rooms.txt
-	 * 
+	 *
 	 * @throws FileNotFoundException in case of errors
 	 */
 	public void createConnections()throws FileNotFoundException{
-		
+
 		List<Room> map = new ArrayList<Room>();
-		
+
 		File rooms3 = new File("rooms.txt");
 		Scanner	scan = new Scanner(rooms3);
 
 		while(scan.hasNextLine()){
-			
+
 			String line = scan.nextLine();
-			
+
 			String[] line1 = line.split("~");
-			
+
 			String header = line1[0];
-			
-			List<Option> options2 = new LinkedList<Option>(); 
-			
+
+			List<Option> options2 = new LinkedList<Option>();
+
 			for(int i=1;i<line1.length-1;i++){
 				Option temp = new Option(line1[i], "root", "interact");
 				options2.add(temp);
 			}
-			
+
 			String[] header1 = header.split("@");
 			int roomid = Integer.parseInt(header1[0]);
-			
+
 			int connectionN = Integer.parseInt(header1[1]);
 			int connectionE = Integer.parseInt(header1[2]);
 			int connectionS = Integer.parseInt(header1[3]);
@@ -63,134 +63,147 @@ public class Map{
 	}
 	/**
 	 * This method will run the map logic of the game
-	 * 
+	 *
 	 * @return String currently a placeholder that will print to the screen saying you win or lose
-	 * 
+	 *
 	 * @param player the adventurer/player character
 	 * @param root the starting room of the map, will be updated recursively as program runs
 	 */
-	public String runMap(Adventurer player, Room root){
+	public String runMap(Adventurer player, Room root)throws FileNotFoundException{
 			Scanner console = new Scanner(System.in);
-			
+
+			player.roomIn = root.roomID;
+
 			if( root.roomID==47) return "You win"; //exits recursive loop, currently set as a placeholder
-			
+
 			Advent.printCenter(root.desc);
 			space();
-			
+
 			Room output = choose(player, root,console);
-				
+
 			return runMap(player,output);
-			
+
 	}
 	/**
 	 * Prints out a move option and other options that exists from the room's options[] and asks the player to choose one.
-	 * 
+	 *
 	 * @return Room the room that you will be moving into
-	 * 
+	 *
 	 * @param player the adventurer/player character
 	 * @param current the Room the player is currently in
 	 * @param console the user's keyboard inputs
 	 */
-	private Room choose(Adventurer player, Room current,Scanner console){ // n is number of options
+	private Room choose(Adventurer player, Room current,Scanner console)throws FileNotFoundException{ // n is number of options
 		int choice = 0;
 		Exception iae = new IllegalArgumentException();
-		int n = current.options.size()-3;
+		int n = current.options.size()-3; //number of avaiable options at a node
 		do{
 			System.out.println("Please choose an option below:\n");
 			try{
 			System.out.println("("+1+") -" + "Move");
 			for(int i=2; i<=n;i++){
-			
+
 			System.out.println("("+i+") -" + current.options.get(i+2)); //prints out the number and corresponding option
 			System.out.println("");
 			}
 			System.out.println("("+(n+1)+") -" + "Character screen and journal");
+			System.out.println("("+(n+2)+") -" + "View Map");
 			choice = Integer.parseInt(console.nextLine());
 		}catch (Exception e){
 			clearCon();
 			System.out.println("Please enter the number of a valid option.");
 			space(2);
 		}
-		
-		}while(choice<1||choice>n+1);
-		
+
+		}while(choice<1||choice>n+2);
+
 		if(choice ==1){
 			return move(current,console);
 		}
-		else if(choice== n+1){
-			
+		else if(choice== n+1){	//Character screen and journal
+			clearCon();
 			String[] chooseStats = new String[3];
 			chooseStats[0] = "See attributes";
 			chooseStats[1] = "Inventory";
 			chooseStats[2] = "Journal";
 			int choiceStats = Advent.choose(chooseStats,console);
-			
+
 			if(choiceStats == 1){
-				player.getStats();
+				String temp1 = player.getStats();
+				System.out.print(temp1);
+				Advent.cont(console);
+				clearCon();
 			}
 			if(choiceStats == 2){
 				player.seeInventory();
+				clearCon();
 			}
 			if(choiceStats == 3){
-				player.quests.seeJournal();
+				player.journal.seeJournal();
+				Advent.cont(console);
+				clearCon();
 			}
 		}
+		else if(choice==n+2){	//view map
+			MapItem useMe = new MapItem();
+			useMe.useItem(player);
+		}
 		else{
-			
+
 			runRoom(player, current, choice-2, console);
 		}
-		
-		
+
+
 		return current;
-	
+
 	}
 	/**
 	 * When the player choose an option besides move, the player is "moved" to a corresponding Option node that is chosen (he will return back after exiting the option logic)
-	 * 
+	 *
 	 * @param player the adventurer/player character
 	 * @param current the Room the player is currently in
 	 * @param choice an integer that corresponds to the user's choice from the option[]
 	 * @param console the user's keyboard inputs
 	 */
 	private void runRoom(Adventurer player, Room current, int choice, Scanner console){
-		
+
 		Option temp = current.options2.get(choice);
-		
-		
-		
+
+
+
 		temp.runTree(player,temp);
-		
+
 	}
-	
+
 	/**
 	 * When the player chooses move, the player is given the choice of available rooms to move into. This will print out those choices and
 	 * allow the user to select a new room to move into or stay in their current room.
-	 * 
+	 *
 	 * @return Room the room that you will be moving into
-	 * 
+	 *
 	 * @param current the Room the player is currently in
 	 * @param console the user's keyboard inputs
 	 */
 	private Room move(Room current, Scanner console){
 		int ways = 0;
 		List<Integer> way = new LinkedList<Integer>();
-		
+
 		for(int i = 0; i <= 3; i++){
 			if(current.connections[i] != -1){
 				way.add(i);
 				ways++;
 			}
 		}
-		
+
 		int choice = 0;
 		Exception iae = new IllegalArgumentException();
 		Room output = new Room();
 			do{
 				System.out.println("Please choose an option below:\n");
 				try{
-					
+
 				for(int i=1; i<=ways;i++){
-				
+
 				System.out.println("("+i+") -" + current.options.get(way.get(i-1))); //prints out the number and corresponding option
 				System.out.println("");
 				}
@@ -203,11 +216,11 @@ public class Map{
 				space(2);
 			}
 			}while(choice<1||choice>ways+1);
-			
+
 			if(choice==ways+1) return current;
 			int output1 = current.connections[way.get(choice-1)];
 			output = getRoom(output1);
-			
+
 		return output;
 	}
 	/**
@@ -226,28 +239,28 @@ public class Map{
 		for(int i=0; i<=15;i++){
 			System.out.println("");
 		}
-		
+
 	}
 	/**
 	 * Creates empty lines to print onto the console.
-	 * 
+	 *
 	 * @param lines the amount of blank lines you wish to print to the console.
 	 */
 	public static void space(int lines){
 		for(int i=0; i<=lines;i++){
 			System.out.println("");
 		}
-		
+
 	}
 	/**
 	 * Returns the room that corresponds to a RoomID
-	 * 
+	 *
 	 * @return Room the room that corresponds to the roomID entered
-	 * 
+	 *
 	 * @param roomid The integer ID of the room you want to return
 	 */
 	public Room getRoom(int roomid){
-		
+
 		Room output = rooms.get(roomid-1);
 		return output;
 	}

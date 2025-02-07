@@ -1,47 +1,47 @@
-1@-1@-1@-1@-1@ Empty. ~
-2@1@-1@3@-1@ The dock is busy with fishermen and children playing, all seems well here. ~
+1@-1@6@2@-1@ You are at the entrance to the docks, freshly finished Guayacan planks with perfect gaps are covered in salt water, held up by inflation devices anchored to the harbour floor. ~
+2@1@-1@3@-1@ The dock is busy with fishermen and Mahakahs loading and preparing their foreign Arawak canoes for travel, the water seems calms here. ~
 3@2@-1@18@-1@ You are enjoying the wind and waves, to the southeast are steep wet rocks from a stream above ~
 4@-1@9@5@-1@ You stand infront of the Northwest watchtower, the wind from the ocean is cold and salty. ~
-5@4@10@6@-1@ You are at a mostly barren junction. You see a sign with dirctions. ~
-6@5@-1@7@1@ You are at the top of the steps overlooking the dock, you see a great eagle soaring above. ~
-7@6@12@8@-1@ You are in the Western village square. The traffic is bustling with many warriors and artisans buying or selling goods. ~
-8@7@13@-1@-1@ In the corner of the village square is a door to the holy vault, there is a guard always here. ~
+5@4@10@6@-1@ You are just north of the ants of peoples moving from docks to the village square, using wooden wheeled carts to transport goods, not many tourists here. ~
+6@5@-1@7@1@ You are at the top of the ramps overlooking the dock, most people are moving toward the dock or the village square. You see a great eagle soaring above. ~
+7@6@12@8@-1@ You are in the western village square. The fountains blows a mist to the east away from the harbour winds, you see a shop called Harbour Hoarders. ~
+8@7@13@-1@-1@ You are in the corner of the village square overlooking the docks, there is a bench and a nice resting area. Below you can see most of the dock is full of canoes except a few experimental scribe vessels made from ropes and tarps. ~
 9@-1@-1@-1@4@ You are on a dirt trail that leads to the northcoast, you see an old path covered by Badbranch vines. ~
-10@-1@-1@-1@5@ You are in front of the scribe apprentices huts, they take the paid path east often. ~
-11@-1@14@12@-1@ You are in the Northern village square. Many people swarm the stands looking for good deals in the Weaver's guild stalls ~
+10@-1@-1@-1@5@ You are in front of the scribe huts they are much more elaborate than the mudwork and thatch huts in the southeast, the scribes often take a paid path east to the Great library. To the north you see a patch of Badbranch vines toward the North Coast. ~
+11@-1@14@12@-1@ You are in the Northern village square. Many people swarm the stands looking for good deals in the Weaver's guild stalls to your north. Rugs, baskets, capes, curtains and robes are all highly sought after weaver goods. ~
 12@11@15@13@7@ The sun shines brightly on the streams running from the center fountain, it is truly a marvel. ~
-13@12@16@-1@8@ The stalls near the entrance of the square are often overlooked and filled with lesser quality goods. ~
-14@-1@19@15@11@ Kumon, the Weaver guild master is teaching his apprentices. ~
+13@12@16@-1@8@ The stalls near the main entrance of the square are often overlooked and filled with lesser quality goods. A particular stall specializes in Farming implements. There are also some shady looking merchants here. ~
+14@-1@19@15@11@ A decorated path extends to East and here it collides with the Weaver's guild entance. Kumon, the Weaver guild master is teaching his apprentices, they look carefully as he crafts a woven basket, the simplest and truest construction of any weaver. ~
 15@14@-1@16@12@ You are in the eastern village square. The weavers operate a very lucrative set of stalls. ~
-16@15@21@-1@13@ You are at the main entrance to the village square. The guards eye-up and search travellers and politicans and some locals. ~
-17@-1@-1@-1@-1@ Empty. ~
-18@-1@-1@-1@-1@ Empty. ~
-19@-1@27@20@14@ You are at a junction in the middle of town. A brick road meets up with a decorated road. You see a sign with directions. ~
-20@19@-1@21@-1@ You are on a road designed for heavy traffic, it is decorated with translucient sunstones and gems. ~
-21@20@29@22@16@ The main town junction. You can follow the decorated path to the perch or stay on the main street. ~
-22@21@-1@23@-1@ Heavy iron gates tower 15 feet high, surrounded by a stone rampart. The town was designed for lengthy sieges. ~
-23@-1@-1@-1@-1@ Empty. ~
-24@-1@-1@-1@-1@ Empty. ~
-25@-1@-1@-1@-1@ Empty. ~
-26@-1@33@27@-1@ You stand infront of the former great cathedral and new great library, many pompous scribes wander the streets. ~
-27@26@34@28@19@ The decorated path continues East. You see a dark alley to your south and the library to your northeast. ~
-28@27@-1@29@-1@ The alley is ripe with the smell of the unfortunates forgotten by the tribe. It is cramped and humid in the alley. ~
-29@28@35@-1@21@ You are on a brick road, to the west is the village square and to the east is the town inn. ~
-30@-1@-1@-1@-1@ Empty. ~
-31@-1@-1@-1@-1@ Empty. ~
-32@-1@-1@33@-1@ The space is sprawling with scribes jotting notes and classes being held in the courtyard. ~
-33@32@-1@-1@26@ Old cathedral windows cast colored light across the rows of books. The library is vast. ~
-34@-1@39@-1@27@ You are on a decorated path that leads east. To the north you see the Great Library. ~
-35@-1@41@-1@29@ You are on a brickroad, to the east is the thatch huts of the locals, to the west is the main Gate. You are infront of the inn. ~
-36@-1@42@37@-1@ The chief keeps his best warriors close. They sleep in the guardhouse attached to the great hall. ~
-37@36@43@38@-1@ You stand at the top of the ornate stairs, you stand on the chief's perch, the highest point in the village. ~
-38@37@44@39@-1@ Halfway up the blue and purple gem dotted stairs is a plateau that is occupied by the hunter's guild. ~
-39@38@-1@40@34@ The ecentricly colored path ends in a staircase north up a moderate hill. To the south is a toll frequented by hunters and politicians. ~
-40@39@45@41@-1@ The toll to the north is operated by Ruai, they operate without higher supervision. To the east are the many teepees and huts of the locals. ~
-41@40@46@-1@35@ You approach the southeast corner of the village, littered with houses and hunters from the guild leaving to hunt beyond the walls in the jungle. ~
-42@-1@47@43@36@ The great hall of the chief is bustling with activity. The beurocracy is alive with lower officials and other tribe emmisaries chatting within the lush plantlife. Two streams flow through marble channels that border the hall. ~
-43@42@-1@-1@37@ The garden has several workers with sweat-lined clothes pruning and toiling. They attempt to show their gratitude by working vigorously ~
-44@-1@-1@-1@38@ The hunter's guild is surprisingly barren. Bow strings and other weapons lay haphazardly near the side of the guild house. You can see clearly into the lush jungle to the east and vines tangle from the cliffs above. ~
+16@15@21@-1@13@ You are at the main entrance to the village square. Some guards loiter and smoke nearby while harrassing the occasional traveller. ~
+17@-1@-1@18@-1@ Empty. ~
+18@17@23@-1@-1@ Farms dominate the rain-soaked area adjacent to the calm basin. Mostly growing corn to feed the village, and some medicinal and crafting plants.~
+19@-1@27@20@14@ You are at a junction in the middle of town. To the west, through a guard post, lies the heart of the village, protected and highly guarded this area is home to politicians, great scribes and hunters and most importantly, cheif's perch. The older dirt road running North ends in a T with a decorated stone road running East. ~
+20@19@-1@21@-1@ You are on a dirt road running north and south designed for heavy traffic. ~
+21@20@29@22@16@ The main town junction, dirt roads lead in all directions. To the south are the massive wooden walls meant mostly to keep out the dangerous wildlife by also to project the power of the head tribe in the federation. No other village on the island has walls as well maintained. ~
+22@21@-1@-1@-1@ You see the wooden gates that lowers over a ditch held by a complex rope system, surrounded by a wooden rampart. This entrance was designed to have the occupants look down upon any visitors as they enter. ~
+23@-1@30@24@18@ Outside the village is a dangerous area, but the main road nearby the village and between the watch tower and farms are patrolled and hunted often. Farther south the island grows around the road and most sunlight fades beneath the tropical lush. ~
+24@23@-1@25@-1@ Empty. ~
+25@24@-1@-1@-1@ Empty. ~
+26@-1@33@27@-1@ You stand in garden and square outside the Great Library, scribes both old and new are in groups enjoying the sunlight while studying. To the west is the Toll used by scribes to get to their special houses. ~
+27@26@34@28@19@ A beautiful decorated stone path runs east to west with blue and pink rocks embedded. You see an alley to your south and the library to your northeast. The Scribe courtyard is directly to your north. ~
+28@27@-1@29@-1@ It is cramped and humid in the alley. Not much traffic moves here except the occasional traveller or politician loitering outside the back of the inn. ~
+29@28@35@-1@21@ You are on a dirt road, to the west is the village square and to the east is the town inn. You see an alley leading north. ~
+30@-1@-1@-1@23@ The map makes the road here seem shorter, but you've been walking for much of the day. You can see the mountains to your North East and the Eastern watch tower nearby the coast of the Forboding Sea. ~
+31@-1@-30@-1@-1@ Empty. ~
+32@-1@-1@33@-1@ The space is sprawling with scribes jotting notes and classes being held in various rooms. The foreign stonework of the Great Library mingles with the domestic woodwork of the scribes guild connected to it. ~
+33@32@-1@-1@26@ Beautiful glass holes cast colored light across the rows of paper. The library is vast, and new. Many scribes treat the Library like a place of worship. ~
+34@-1@39@-1@27@ You are on a decorated path that draws you to the East where the road is lined in beautiful flowers and hanging baskets. To the north you see the Great Library, built taller than even the cheif's hut and made completely of stone. It's shadow is long and dark. ~
+35@-1@41@-1@29@ You are on a dirt road, to the east is the thatch huts of the hunters and various locals, to the west is the main Gate and village square. You are infront of the inn. ~
+36@-1@42@37@-1@ You stand on the high point north of the mountains on the coast. A steep cliff lines this side of the coast created by eras of the forboding sea sending crushing waves. ~
+37@36@43@38@-1@ The chief keeps his best hunters close. They guard the top of the stairs to cheif's perch. ~
+38@37@44@39@-1@ Halfway up the blue and purple gem dotted stairs is a plateau that is occupied by the hunter's guild the military power of the tribe. ~
+39@38@-1@40@34@ The ecentricly colored path ends in an equally ecentric staircase north up a steep hill. Their is a guarp post to the north operated by Ruai, making a final elaborate effort to prevent anything suspicious from the chief's perch. To the south is an undecorated stone road frequented by servants, hunters and politicians. ~
+40@39@45@41@-1@ You are on a hard stone road that runs from North to South. To the East are older huts and the even antiquated teepees. Their is a shared water source from a stream from mountains to the Southeast that supplies the village. ~
+41@40@46@-1@35@ You approach the southeast corner of the village, littered with huts far more vast than the maps make it seem. Huge towering mountains extend to your Southeast where the walls gradually meet them and melt away. Whoever made this corner of your map needs to be replaced. ~
+42@-1@47@43@36@ The great hall of the chief is bustling with activity. The beurocracy is alive with lower officials and other tribe emmisaries chatting within the lush plantlife. Two streams flow through marble channels that border the hall. I wonder how they get the water up this high? ~
+43@42@-1@-1@37@ The garden has several workers with sweat-lined clothes pruning and toiling. They attempt to show their gratitude by working vigorously. ~
+44@-1@-1@-1@38@ The hunter's guild is surprisingly barren. Bow strings and other weapons lay haphazardly near the side of the guild house. Vines tangle down from the gardens above. You can see deep to the East toward the harsh waters. To the East there are no more islands that humans have reached.~
 45@-1@48@-1@40@ You are in the housing area. There is nothing of note here. ~
 46@-1@49@-1@41@ You are in the housing area. There is nothing of note here. ~
 47@-1@-1@-1@42@ The chief's hearing room is a large empty room with a podium 20 feet high in the center with a large chair. There is a small red mat in front of you. ~
