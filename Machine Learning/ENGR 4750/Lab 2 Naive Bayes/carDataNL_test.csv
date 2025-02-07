@@ -1,0 +1,6 @@
+price,maintenance,trunk,safety,RATING
+medium,low_cost,big,poor,LOW
+high,low_cost,big,good,HIGH
+high,high_cost,big,good,HIGH
+low,high_cost,small,ave,LOW
+medium,med_cost,med,ave,HIGH

@@ -1,4 +1,4 @@
-# FinalCS1
+# Beyond Earth
 Hello user! This is my first major project in which the user embarks on a journey to save the world from certain doom.
 This is currently a work in progress but contains some playable code. For instance at this point you may complete the initial
 tutorial scene, create your character and battle with a desperate man. I plan on adding inventory support, branching story systems and 
